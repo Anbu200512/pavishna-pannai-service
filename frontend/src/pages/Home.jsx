@@ -15,7 +15,7 @@ function Home() {
       <section className="about">
         <h2>About Us</h2>
         <p>
-          Pavishana Pannai Service is a trusted agriculture supplier
+          Pavishna Pannai Service is a trusted agriculture supplier
           supporting farmers with quality products and expert guidance.
         </p>
       </section>

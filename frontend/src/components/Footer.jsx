@@ -1,7 +1,7 @@
 function Footer() {
   return (
     <footer className="footer">
-      <p>© 2026 Pavishana Pannai Service</p>
+      <p>© 2026 Pavishna Pannai Service</p>
       <p>Seeds • Fertilizers • Medicines</p>
     </footer>
   );

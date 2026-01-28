@@ -6,17 +6,20 @@ function Navbar() {
 
   return (
     <header className="navbar">
-      <div className="logo">🌾 Pavishana Pannai</div>
+      <div className="logo">🌾 Pavishna Pannai</div>
 
       <div className="menu-icon" onClick={() => setOpen(!open)}>
         ☰
       </div>
 
       <nav className={open ? "nav-links open" : "nav-links"}>
-        <Link to="/" onClick={() => setOpen(false)}>Home</Link>
-        <Link to="/products" onClick={() => setOpen(false)}>Products</Link>
-        <a href="#contact" onClick={() => setOpen(false)}>Contact</a>
-      </nav>
+  <Link to="/" onClick={() => setOpen(false)}>Home</Link>
+  <Link to="/about" onClick={() => setOpen(false)}>About</Link>
+  <Link to="/services" onClick={() => setOpen(false)}>Services</Link>
+  <Link to="/products" onClick={() => setOpen(false)}>Products</Link>
+  <Link to="/contact" onClick={() => setOpen(false)}>Contact</Link>
+</nav>
+
     </header>
   );
 }
