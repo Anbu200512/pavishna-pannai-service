@@ -9,7 +9,7 @@ function About() {
       </p>
 
       <p>
-        We provide high-quality seeds, fertilizers, and plant medicines with
+        We provide high-quality seeds, fertilizers, and plant medicines with extra
         expert guidance. Our mission is to support farmers with reliable
         products and honest service.
       </p>
