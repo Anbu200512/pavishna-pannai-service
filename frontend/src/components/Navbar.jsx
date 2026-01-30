@@ -6,7 +6,7 @@ function Navbar() {
 
   return (
     <header className="navbar">
-      <div className="logo">🌾 Pavishna Pannai</div>
+      <div className="logo">🌾 Pavishna Pannai Service</div>
 
       <div className="menu-icon" onClick={() => setOpen(!open)}>
         ☰
