@@ -142,10 +142,11 @@ function AdminServices() {
     {services.map(service => (
       <div key={service._id} className="admin-service-card">
 
-        <img
-          src={`https://pavishna-pannai-service-backend.onrender.com/${service.image}`}
-          alt={service.title}
-        />
+<img
+  src={service.image}
+  alt={service.title}
+/>
+
 
         <div className="admin-service-content">
           <h4>{service.title}</h4>

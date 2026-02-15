@@ -42,12 +42,13 @@ function Services() {
           key={service._id}
           className={`service-row ${index % 2 !== 0 ? "reverse" : ""}`}
         >
-          <div className="service-image">
-            <img
-              src={`https://pavishna-pannai-service-backend.onrender.com/${service.image?.replace(/\\/g, "/")}`}
-              alt={service.title}
-            />
-          </div>
+<div className="service-image">
+  <img
+    src={service.image}
+    alt={service.title}
+  />
+</div>
+
 
           <div className="service-content">
             <h2>{service.title}</h2>

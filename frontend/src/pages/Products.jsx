@@ -189,15 +189,12 @@ function Products() {
         <div className="product-grid">
           {currentProducts.map((product) => (
             <div className="product-card" key={product._id}>
-              <div className="product-image">
-                <img
-                  src={`${import.meta.env.VITE_API_URL}/${product.image?.replace(
-                    /\\/g,
-                    "/",
-                  )}`}
-                  alt={product.name}
-                />
-              </div>
+       <div className="product-image">
+  <img
+    src={product.image}
+    alt={product.name}
+  />
+</div>
 
               <div className="product-info">
                 <h3>{product.name}</h3>

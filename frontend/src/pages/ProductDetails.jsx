@@ -98,10 +98,11 @@ function ProductDetails() {
                 className="related-card"
                 onClick={() => navigate(`/products/${item._id}`)}
               >
-                <img
-                  src={`https://pavishna-pannai-service-backend.onrender.com/${item.image.replace(/\\/g, "/")}`}
-                  alt={item.name}
-                />
+<img
+  src={item.image}
+  alt={item.name}
+/>
+
                 <p>{item.name}</p>
               </div>
             ))}

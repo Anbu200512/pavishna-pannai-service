@@ -290,10 +290,11 @@ function Home() {
                 className="slide-card"
                 onClick={() => navigate(`/products/${product._id}`)}
               >
-                <img
-                  src={`https://pavishna-pannai-service-backend.onrender.com/${product.image?.replace(/\\/g, "/")}`}
-                  alt={product.name}
-                />
+<img
+  src={product.image}
+  alt={product.name}
+/>
+
 
                 <h3>{product.name}</h3>
 

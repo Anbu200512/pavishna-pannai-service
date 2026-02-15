@@ -129,10 +129,11 @@ const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 
         {currentProducts.map(product => (
           <div className="admin-card" key={product._id}>
-            <img
-              src={`https://pavishna-pannai-service-backend.onrender.com/${product.image}`}
-              alt={product.name}
-            />
+<img
+  src={product.image}
+  alt={product.name}
+/>
+
 
             <h4>{product.name}</h4>
 
