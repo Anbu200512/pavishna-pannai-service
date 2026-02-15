@@ -98,7 +98,7 @@ function Home() {
 
   /* FETCH PRODUCTS */
   useEffect(() => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://pavishna-pannai-service-backend.onrender.com/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data.slice(0, 6)))
       .catch((err) => console.log(err));
@@ -291,7 +291,7 @@ function Home() {
                 onClick={() => navigate(`/products/${product._id}`)}
               >
                 <img
-                  src={`http://localhost:5000/${product.image?.replace(/\\/g, "/")}`}
+                  src={`https://pavishna-pannai-service-backend.onrender.com/${product.image?.replace(/\\/g, "/")}`}
                   alt={product.name}
                 />
 

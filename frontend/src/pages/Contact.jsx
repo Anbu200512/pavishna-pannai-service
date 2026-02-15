@@ -36,7 +36,7 @@ function Contact() {
 
   /* LOAD CONTACT SETTINGS */
   useEffect(() => {
-    fetch("http://localhost:5000/api/contact-settings")
+    fetch("https://pavishna-pannai-service-backend.onrender.com/api/contact-settings")
       .then((res) => res.json())
       .then((data) => setSettings(data));
   }, []);
@@ -64,7 +64,7 @@ function Contact() {
   const handleSubmit = async (e) => {
     e.preventDefault();
 
-    const res = await fetch("http://localhost:5000/api/messages", {
+    const res = await fetch("https://pavishna-pannai-service-backend.onrender.com/api/messages", {
       method: "POST",
       headers: {
         "Content-Type": "application/json",

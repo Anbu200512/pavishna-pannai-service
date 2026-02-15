@@ -5,7 +5,7 @@ function AdminMessages() {
 
   /* LOAD MESSAGES */
   const loadMessages = () => {
-    fetch("http://localhost:5000/api/messages")
+    fetch("https://pavishna-pannai-service-backend.onrender.com/api/messages")
       .then((res) => res.json())
       .then((data) => setMessages(data));
   };
@@ -18,7 +18,7 @@ function AdminMessages() {
   const deleteMessage = async (id) => {
     if (!window.confirm("Delete this message?")) return;
 
-    const res = await fetch(`http://localhost:5000/api/messages/${id}`, {
+    const res = await fetch(`https://pavishna-pannai-service-backend.onrender.com/api/messages/${id}`, {
       method: "DELETE",
     });
 

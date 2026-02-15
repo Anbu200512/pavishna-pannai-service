@@ -12,7 +12,7 @@ const productsPerPage = 6;
   const navigate = useNavigate();
 
   const loadProducts = () => {
-    fetch("http://localhost:5000/api/products")
+    fetch("https://pavishna-pannai-service-backend.onrender.com/api/products")
       .then(res => res.json())
       .then(data => setProducts(data));
   };
@@ -31,7 +31,7 @@ const productsPerPage = 6;
 
     const token = localStorage.getItem("adminToken");
 
-    const res = await fetch(`http://localhost:5000/api/products/${id}`, {
+    const res = await fetch(`https://pavishna-pannai-service-backend.onrender.com/api/products/${id}`, {
       method: "DELETE",
       headers: {
         Authorization: `Bearer ${token}`,
@@ -130,7 +130,7 @@ const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
         {currentProducts.map(product => (
           <div className="admin-card" key={product._id}>
             <img
-              src={`http://localhost:5000/${product.image}`}
+              src={`https://pavishna-pannai-service-backend.onrender.com/${product.image}`}
               alt={product.name}
             />
 

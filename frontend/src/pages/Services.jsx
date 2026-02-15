@@ -18,7 +18,7 @@ function Services() {
   }, []);
 
   useEffect(() => {
-    fetch("http://localhost:5000/api/services")
+    fetch("https://pavishna-pannai-service-backend.onrender.com/api/services")
       .then((res) => res.json())
       .then((data) => setServices(data));
   }, []);
@@ -44,7 +44,7 @@ function Services() {
         >
           <div className="service-image">
             <img
-              src={`http://localhost:5000/${service.image?.replace(/\\/g, "/")}`}
+              src={`https://pavishna-pannai-service-backend.onrender.com/${service.image?.replace(/\\/g, "/")}`}
               alt={service.title}
             />
           </div>

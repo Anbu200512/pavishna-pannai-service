@@ -9,7 +9,7 @@ function ProductDetails() {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`http://localhost:5000/api/products/${id}`)
+    fetch(`https://pavishna-pannai-service-backend.onrender.com/api/products/${id}`)
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -27,7 +27,7 @@ function ProductDetails() {
         }
 
         // Fetch all products for related
-        fetch("http://localhost:5000/api/products")
+        fetch("https://pavishna-pannai-service-backend.onrender.com/api/products")
           .then((res) => res.json())
           .then((allProducts) => {
             const related = allProducts
@@ -51,7 +51,7 @@ function ProductDetails() {
       <div className="product-details-main">
         <div className="details-image">
           <img
-            src={`http://localhost:5000/${product.image.replace(/\\/g, "/")}`}
+            src={`https://pavishna-pannai-service-backend.onrender.com/${product.image.replace(/\\/g, "/")}`}
             alt={product.name}
           />
         </div>
@@ -99,7 +99,7 @@ function ProductDetails() {
                 onClick={() => navigate(`/products/${item._id}`)}
               >
                 <img
-                  src={`http://localhost:5000/${item.image.replace(/\\/g, "/")}`}
+                  src={`https://pavishna-pannai-service-backend.onrender.com/${item.image.replace(/\\/g, "/")}`}
                   alt={item.name}
                 />
                 <p>{item.name}</p>

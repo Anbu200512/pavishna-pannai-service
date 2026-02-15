@@ -13,7 +13,7 @@ function AdminServices() {
 
   /* LOAD SERVICES */
   const loadServices = () => {
-    fetch("http://localhost:5000/api/services")
+    fetch("https://pavishna-pannai-service-backend.onrender.com/api/services")
       .then(res => res.json())
       .then(data => setServices(data));
   };
@@ -46,11 +46,11 @@ function AdminServices() {
       data.append("image", form.image);
     }
 
-    let url = "http://localhost:5000/api/services/add";
+    let url = "https://pavishna-pannai-service-backend.onrender.com/api/services/add";
     let method = "POST";
 
     if (editId) {
-      url = `http://localhost:5000/api/services/${editId}`;
+      url = `https://pavishna-pannai-service-backend.onrender.com/api/services/${editId}`;
       method = "PUT";
     }
 
@@ -75,7 +75,7 @@ function AdminServices() {
   const deleteService = async (id) => {
     if (!window.confirm("Delete this service?")) return;
 
-    await fetch(`http://localhost:5000/api/services/${id}`, {
+    await fetch(`https://pavishna-pannai-service-backend.onrender.com/api/services/${id}`, {
       method: "DELETE"
     });
 
@@ -143,7 +143,7 @@ function AdminServices() {
       <div key={service._id} className="admin-service-card">
 
         <img
-          src={`http://localhost:5000/${service.image}`}
+          src={`https://pavishna-pannai-service-backend.onrender.com/${service.image}`}
           alt={service.title}
         />
 

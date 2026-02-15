@@ -51,14 +51,14 @@ const editId = editState.editId;
 
 /* ================= LOAD CATEGORIES ================= */
 useEffect(() => {
-  fetch("http://localhost:5000/api/categories")
+  fetch("https://pavishna-pannai-service-backend.onrender.com/api/categories")
     .then(res => res.json())
     .then(data => setCategories(data));
 }, []);
 
 /* ================= LOAD BRANDS ================= */
 useEffect(() => {
-  fetch("http://localhost:5000/api/brands")
+  fetch("https://pavishna-pannai-service-backend.onrender.com/api/brands")
     .then(res => res.json())
     .then(data => setBrands(data));
 }, []);
@@ -88,11 +88,11 @@ useEffect(() => {
       data.append("image", form.image);
     }
 
-    let url = "http://localhost:5000/api/products/add";
+    let url = "https://pavishna-pannai-service-backend.onrender.com/api/products/add";
     let method = "POST";
 
     if (editId) {
-      url = `http://localhost:5000/api/products/${editId}`;
+      url = `https://pavishna-pannai-service-backend.onrender.com/api/products/${editId}`;
       method = "PUT";
     }
 
@@ -136,7 +136,7 @@ const resetForm = () => {
   const deleteCategory = async (id) => {
     if (!window.confirm("Delete this category?")) return;
 
-    await fetch(`http://localhost:5000/api/categories/${id}`, {
+    await fetch(`https://pavishna-pannai-service-backend.onrender.com/api/categories/${id}`, {
       method: "DELETE",
     });
 
@@ -148,7 +148,7 @@ const resetForm = () => {
   const deleteBrand = async (id) => {
     if (!window.confirm("Delete this brand?")) return;
 
-    await fetch(`http://localhost:5000/api/brands/${id}`, {
+    await fetch(`https://pavishna-pannai-service-backend.onrender.com/api/brands/${id}`, {
       method: "DELETE",
     });
 
@@ -233,7 +233,7 @@ const resetForm = () => {
             type="button"
             onClick={async () => {
               const res = await fetch(
-                "http://localhost:5000/api/categories/add",
+                "https://pavishna-pannai-service-backend.onrender.com/api/categories/add",
                 {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },
@@ -304,7 +304,7 @@ const resetForm = () => {
             type="button"
             onClick={async () => {
               const res = await fetch(
-                "http://localhost:5000/api/brands/add",
+                "https://pavishna-pannai-service-backend.onrender.com/api/brands/add",
                 {
                   method: "POST",
                   headers: { "Content-Type": "application/json" },

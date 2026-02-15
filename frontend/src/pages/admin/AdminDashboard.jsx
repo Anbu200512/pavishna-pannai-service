@@ -19,14 +19,14 @@ const AdminDashboard = () => {
     const fetchData = async () => {
       try {
         const statsRes = await axios.get(
-          "http://localhost:5000/api/admin/stats",
+          "https://pavishna-pannai-service-backend.onrender.com/api/admin/stats",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
         );
 
         const msgRes = await axios.get(
-          "http://localhost:5000/api/admin/latest-messages",
+          "https://pavishna-pannai-service-backend.onrender.com/api/admin/latest-messages",
           {
             headers: { Authorization: `Bearer ${token}` },
           }
