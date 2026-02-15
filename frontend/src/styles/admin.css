@@ -1,0 +1,1124 @@
+/* ================= ADMIN LOGIN ================= */
+
+.admin-login-container {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: linear-gradient(135deg, #f8fafc, #e8f5e9);
+  padding: 20px;
+}
+
+/* Login Card */
+.admin-login-card {
+  background: white;
+  width: 100%;
+  max-width: 380px;
+  padding: 40px 35px;
+  border-radius: 16px;
+  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  text-align: center;
+  transition: 0.3s ease;
+}
+
+.admin-login-card:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 50px rgba(0, 0, 0, 0.12);
+}
+
+/* Logo Section */
+.logo-section img {
+  width: 60px;
+  margin-bottom: 10px;
+}
+
+.logo-section h2 {
+  margin: 5px 0 10px;
+  font-size: 20px;
+  color: #2e7d32;
+  font-weight: 600;
+}
+
+.admin-login-card p {
+  font-size: 14px;
+  color: #6b7280;
+  margin-bottom: 25px;
+}
+
+/* Input Group */
+.input-group {
+  position: relative;
+  margin-bottom: 20px;
+}
+
+.input-group input {
+  width: 100%;
+  padding: 12px 40px 12px 40px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: 0.2s ease;
+}
+
+.input-group input:focus {
+  outline: none;
+  border-color: #2e7d32;
+  background: white;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.15);
+}
+
+/* Left Icon */
+.input-group .icon {
+  position: absolute;
+  left: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 16px;
+}
+
+/* Eye Toggle */
+.input-group .toggle {
+  position: absolute;
+  right: 12px;
+  top: 50%;
+  transform: translateY(-50%);
+  cursor: pointer;
+  font-size: 16px;
+}
+
+/* Login Button */
+.admin-login-btn {
+  width: 100%;
+  padding: 12px;
+  border-radius: 8px;
+  border: none;
+  background: #2e7d32;
+  color: white;
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.admin-login-btn:hover {
+  background: #1b5e20;
+}
+
+/* Responsive */
+@media (max-width: 500px) {
+  .admin-login-card {
+    padding: 30px 20px;
+  }
+
+  .logo-section h2 {
+    font-size: 18px;
+  }
+}
+
+
+
+
+/* ================= ADMIN BASE ================= */
+
+.admin-container {
+  display: flex;
+   height: 100vh;
+  overflow: hidden; 
+  background: #f4f6f9;
+  font-family: Arial, sans-serif;
+}
+
+/* ================= SIDEBAR ================= */
+
+.admin-sidebar {
+  width: 240px;
+  background: #1b5e20;
+  color: white;
+  padding: 25px 20px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.3s ease;
+  
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 30px;
+}
+
+.admin-sidebar nav {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.admin-sidebar a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: white;
+  text-decoration: none;
+  padding: 8px 10px;
+  border-radius: 6px;
+  transition: 0.3s ease;
+}
+
+.admin-sidebar a:hover {
+  background: rgba(255,255,255,0.1);
+}
+
+.admin-sidebar a.active {
+  background: rgba(255,255,255,0.2);
+}
+
+.logout-btn {
+  margin-top: auto;
+  padding: 10px;
+  border: none;
+  border-radius: 6px;
+  background: #c62828;
+  color: white;
+  cursor: pointer;
+}
+
+/* ================= MOBILE BUTTON ================= */
+
+.mobile-menu-btn {
+  display: none;
+  position: fixed;
+  top: 15px;
+  left: 15px;
+  background: #1b5e20;
+  color: white;
+  border: none;
+  padding: 10px;
+  border-radius: 6px;
+  font-size: 18px;
+  z-index: 1100;
+  cursor: pointer;
+}
+
+.close-btn {
+  display: none;
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+/* ================= OVERLAY ================= */
+
+.admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
+}
+
+/* ================= MOBILE ================= */
+
+@media (max-width: 900px) {
+
+  .admin-sidebar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 100%;
+    z-index: 1000;
+    transform: translateX(-100%);
+  }
+
+  .admin-sidebar.open {
+    transform: translateX(0);
+  }
+
+  .mobile-menu-btn {
+    display: block;
+  }
+
+  .close-btn {
+    display: block;
+  }
+}
+
+/* ================= MAIN AREA ================= */
+
+.admin-main {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+/* ================= TOPBAR ================= */
+
+.admin-topbar {
+  height: 65px;
+  background: white;
+  border-bottom: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 30px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.04);
+}
+
+/* Left section (hamburger + title) */
+.topbar-left {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* Page Title */
+.admin-topbar h3 {
+  font-size: 18px;
+  font-weight: 600;
+  color: #1f2937;
+  margin: 0;
+}
+
+/* ================= USER SECTION ================= */
+
+.admin-user {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+}
+
+/* Username */
+.admin-user span {
+  font-size: 14px;
+  font-weight: 500;
+  color: #374151;
+}
+
+/* Logout Button */
+.menu-btn-logout {
+  padding: 6px 14px;
+  background: #c62828;
+  border: none;
+  border-radius: 6px;
+  color: white;
+  font-size: 13px;
+  cursor: pointer;
+  transition: 0.25s ease;
+}
+
+.menu-btn-logout:hover {
+  background: #a61e1e;
+}
+
+/* ================= HAMBURGER BUTTON ================= */
+
+/* Hidden by default (desktop) */
+.menu-btn {
+  display: none;
+  background: #1b5e20;
+  border: none;
+  color: white;
+  padding: 8px;
+  border-radius: 6px;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.menu-btn:hover {
+  background: #145c1c;
+}
+
+/* ================= MOBILE RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+
+  /* Show hamburger */
+  .menu-btn {
+    display: block;
+  }
+
+  /* Reduce padding */
+  .admin-topbar {
+    padding: 0 15px;
+    height: 55px;
+  }
+
+  /* Smaller title */
+  .admin-topbar h3 {
+    font-size: 16px;
+  }
+
+  /* Hide username text for small screen */
+  .admin-user span {
+    display: none;
+  }
+
+  /* Smaller logout button */
+  .admin-user button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+/* ================= OVERLAY ================= */
+
+.admin-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.4);
+  z-index: 900;
+}
+
+
+/* ================= CONTENT ================= */
+
+.admin-content {
+  flex: 1;
+  padding: 30px;
+  overflow-y: auto;   /* scroll here */
+}
+
+/* ================= PREMIUM DASHBOARD CARD ================= */
+
+.dashboard-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+  gap: 25px;
+  margin-top: 25px;
+}
+
+.dashboard-card {
+  background: linear-gradient(135deg, #ffffff, #f3f6f9);
+  padding: 25px 28px;
+  border-radius: 16px;
+  box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 150px;
+}
+
+.dashboard-card:hover {
+  transform: translateY(-6px);
+}
+
+/* Header */
+.card-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+/* Icon Circle */
+.card-icon {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 18px;
+}
+
+.dashboard-card h4 {
+  font-size: 15px;
+  color: #555;
+  font-weight: 500;
+}
+
+.dashboard-card p {
+  font-size: 36px;
+  font-weight: 700;
+  margin-top: 15px;
+}
+
+@media (max-width: 600px) {
+
+  .dashboard-card {
+    padding: 20px;
+    min-height: 120px;
+  }
+
+  .dashboard-card p {
+    font-size: 26px;
+  }
+
+  .card-icon {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+}
+
+
+/* ================= DASHBOARD MESSAGES ================= */
+
+.dashboard-messages {
+  margin-top: 50px;
+}
+
+.dashboard-messages h3 {
+  font-size: 18px;
+  margin-bottom: 25px;
+  font-weight: 600;
+}
+
+/* Grid layout */
+.message-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 20px;
+}
+
+/* Message Card */
+.message-card {
+  background: white;
+  padding: 20px 22px;
+  border-radius: 16px;
+  box-shadow: 0 8px 25px rgba(0,0,0,0.05);
+  border-left: 5px solid #2e7d32;
+  transition: 0.3s ease;
+}
+
+.message-card:hover {
+  transform: translateY(-5px);
+}
+
+/* Top section */
+.message-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: start;
+}
+
+.message-card h4 {
+  font-size: 15px;
+  margin-bottom: 4px;
+}
+
+.message-card span {
+  font-size: 13px;
+  color: #777;
+}
+
+.message-card small {
+  font-size: 12px;
+  color: #999;
+}
+
+/* Message Text */
+.message-text {
+  margin-top: 12px;
+  font-size: 14px;
+  line-height: 1.5;
+  color: #444;
+}
+
+@media (max-width: 600px) {
+
+  .message-card {
+    padding: 16px;
+  }
+
+  .message-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .message-top {
+    flex-direction: column;
+    gap: 6px;
+  }
+
+  .message-card small {
+    align-self: flex-start;
+  }
+}
+
+
+/* ================= ADMIN PRODUCT GRID ================= */
+
+.admin-products {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 20px;
+}
+
+.admin-card {
+  background: white;
+  padding: 15px;
+  border-radius: 12px;
+  box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+}
+
+.admin-card img {
+  width: 100%;
+  height: 160px;
+  object-fit: cover;
+  border-radius: 8px;
+  margin-bottom: 10px;
+}
+
+.admin-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-card-actions button {
+  flex: 1;
+  padding: 8px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+}
+
+.admin-card-actions button:first-child {
+  background: #2e7d32;
+  color: white;
+}
+
+.admin-card-actions button:last-child {
+  background: #d32f2f;
+  color: white;
+}
+
+/* ================= ADMIN FILTERS ================= */
+
+.admin-filters {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+}
+
+.admin-filters input,
+.admin-filters select {
+  padding: 8px 12px;
+  border-radius: 6px;
+  border: 1px solid #ddd;
+  font-size: 14px;
+  background: white;
+}
+
+.admin-filters input {
+  flex: 1;
+  min-width: 200px;
+}
+
+.admin-filters select {
+  min-width: 150px;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .admin-filters {
+    flex-direction: column;
+  }
+
+  .admin-filters input,
+  .admin-filters select {
+    width: 100%;
+  }
+}
+
+/* ================= PAGINATION ================= */
+
+.pagination {
+  margin-top: 30px;
+  display: flex;
+  justify-content: center;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.pagination button {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: 1px solid #2e7d32;
+  background: white;
+  color: #2e7d32;
+  cursor: pointer;
+  transition: 0.2s ease;
+}
+
+.pagination button.active {
+  background: #2e7d32;
+  color: white;
+}
+
+.pagination button:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+/* Mobile */
+@media (max-width: 600px) {
+  .pagination button {
+    padding: 5px 10px;
+    font-size: 12px;
+  }
+}
+
+
+/* ================= ADD PRODUCT FORM ================= */
+
+.admin-form {
+  max-width: 750px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Heading */
+.admin-form h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: #1f2937;
+  font-weight: 600;
+  text-align: center;
+}
+
+/* Inputs & Textareas */
+.admin-form input[type="text"],
+.admin-form textarea,
+.admin-form select,
+.admin-form input[type="file"] {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: 0.2s ease;
+}
+
+.admin-form input:focus,
+.admin-form textarea:focus,
+.admin-form select:focus {
+  outline: none;
+  border-color: #2e7d32;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.15);
+}
+
+/* Textarea */
+.admin-form textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Select styling */
+.admin-form select {
+  cursor: pointer;
+}
+
+/* Buttons */
+.admin-form button {
+  padding: 10px 16px;
+  border-radius: 8px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+/* Primary submit button */
+.admin-form button[type="submit"] {
+  background: #2e7d32;
+  color: white;
+  margin-top: 10px;
+}
+
+.admin-form button[type="submit"]:hover {
+  background: #1b5e20;
+}
+
+/* Save Category / Brand buttons */
+.admin-form button[type="button"] {
+  background: #2563eb;
+  color: white;
+}
+
+.admin-form button[type="button"]:hover {
+  background: #1e40af;
+}
+
+/* Spacing for dynamic inputs */
+.admin-form > input + button,
+.admin-form > select + input {
+  margin-top: 8px;
+}
+
+/* File input */
+.admin-form input[type="file"] {
+  background: #ffffff;
+  border: 1px dashed #cbd5e1;
+  padding: 10px;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 768px) {
+  .admin-form {
+    padding: 20px;
+    border-radius: 10px;
+  }
+
+  .admin-form h3 {
+    font-size: 18px;
+  }
+
+  .admin-form input,
+  .admin-form textarea,
+  .admin-form select {
+    font-size: 13px;
+  }
+
+  .admin-form button {
+    font-size: 13px;
+  }
+}
+
+
+/* ================= SERVICES PAGE ================= */
+
+.admin-service-page {
+  padding: 10px 5px;
+}
+
+.admin-service-page h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+}
+
+/* ================= ACTION BUTTONS ================= */
+
+.admin-actions {
+  display: flex;
+  gap: 15px;
+  margin-bottom: 25px;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.admin-actions button {
+  padding: 8px 16px;
+  border-radius: 8px;
+  border: none;
+  background: #2e7d32;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.25s ease;
+}
+
+.admin-actions button:hover {
+  background: #1b5e20;
+}
+
+/* ================= SERVICE GRID ================= */
+
+.admin-services-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 25px;
+}
+
+/* ================= SERVICE CARD ================= */
+
+.admin-service-card {
+  background: white;
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  transition: 0.3s ease;
+  display: flex;
+  flex-direction: column;
+}
+
+.admin-service-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+}
+
+.admin-service-card img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+/* ================= CARD CONTENT ================= */
+
+.admin-service-content {
+  padding: 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.admin-service-content h4 {
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0;
+}
+
+.admin-service-content p {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.5;
+}
+
+/* ================= CARD ACTION BUTTONS ================= */
+
+.admin-card-actions {
+  display: flex;
+  gap: 10px;
+  margin-top: 10px;
+}
+
+.admin-card-actions button {
+  flex: 1;
+  padding: 6px;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  background: #2e7d32;
+  color: white;
+  transition: 0.2s ease;
+}
+
+.admin-card-actions button:hover {
+  opacity: 0.85;
+}
+
+.admin-card-actions .delete {
+  background: #d32f2f;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+
+  .admin-actions {
+    flex-direction: column;
+  }
+
+  .admin-actions button {
+    width: 100%;
+  }
+
+  .admin-service-card img {
+    height: 160px;
+  }
+
+}
+
+
+/* ================= MESSAGES PAGE ================= */
+
+.admin-messages-page {
+  padding: 10px 5px;
+}
+
+.admin-messages-page h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+}
+
+/* ================= MESSAGES GRID ================= */
+
+.admin-messages-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 25px;
+}
+
+/* ================= MESSAGE CARD ================= */
+
+.admin-message-card {
+  background: white;
+  padding: 20px;
+  border-radius: 14px;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.05);
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: 0.3s ease;
+  border-left: 4px solid #2e7d32;
+}
+
+.admin-message-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.08);
+}
+
+/* Name */
+.admin-message-card h4 {
+  margin: 0;
+  font-size: 16px;
+  font-weight: 600;
+  color: #111827;
+}
+
+/* Labels */
+.admin-message-card p {
+  margin: 0;
+  font-size: 14px;
+  color: #374151;
+}
+
+.admin-message-card strong {
+  color: #111827;
+}
+
+/* Message Text */
+.admin-message-text {
+  font-size: 14px;
+  color: #555;
+  line-height: 1.6;
+  margin-top: 5px;
+}
+
+/* Date */
+.admin-message-card small {
+  font-size: 12px;
+  color: #6b7280;
+  margin-top: 5px;
+}
+
+/* ================= ACTION BUTTON ================= */
+
+.admin-card-actions {
+  margin-top: 12px;
+}
+
+.admin-card-actions .delete {
+  padding: 6px 12px;
+  border-radius: 6px;
+  border: none;
+  background: #d32f2f;
+  color: white;
+  cursor: pointer;
+  font-size: 13px;
+  transition: 0.2s ease;
+}
+
+.admin-card-actions .delete:hover {
+  background: #b71c1c;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+
+  .admin-messages-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .admin-message-card {
+    padding: 16px;
+  }
+
+}
+
+
+/* ================= CONTACT SETTINGS PAGE ================= */
+
+.admin-contact-page {
+  padding: 10px 5px;
+}
+
+.admin-contact-page h2 {
+  margin-bottom: 20px;
+  font-size: 20px;
+  font-weight: 600;
+  color: #1f2937;
+  text-align: center;
+}
+
+/* Reuse admin-form styling */
+
+.admin-contact-page .admin-form {
+  max-width: 700px;
+  margin: 0 auto;
+  background: #ffffff;
+  padding: 30px;
+  border-radius: 14px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+/* Inputs */
+.admin-contact-page input,
+.admin-contact-page textarea {
+  width: 100%;
+  padding: 10px 12px;
+  border-radius: 8px;
+  border: 1px solid #d1d5db;
+  font-size: 14px;
+  background: #f9fafb;
+  transition: 0.2s ease;
+}
+
+.admin-contact-page input:focus,
+.admin-contact-page textarea:focus {
+  outline: none;
+  border-color: #2e7d32;
+  background: #ffffff;
+  box-shadow: 0 0 0 2px rgba(46, 125, 50, 0.15);
+}
+
+.admin-contact-page textarea {
+  min-height: 90px;
+  resize: vertical;
+}
+
+/* Save Button */
+.admin-contact-page button {
+  padding: 10px 18px;
+  border-radius: 8px;
+  border: none;
+  background: #2e7d32;
+  color: white;
+  cursor: pointer;
+  font-size: 14px;
+  font-weight: 500;
+  transition: 0.25s ease;
+}
+
+.admin-contact-page button:hover {
+  background: #1b5e20;
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 600px) {
+  .admin-contact-page .admin-form {
+    padding: 20px;
+  }
+
+  .admin-contact-page h2 {
+    font-size: 18px;
+  }
+}
