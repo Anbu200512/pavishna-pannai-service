@@ -53,6 +53,7 @@ function ProductDetails() {
           <img
             src={`https://pavishna-pannai-service-backend.onrender.com/${product.image.replace(/\\/g, "/")}`}
             alt={product.name}
+            loading="lazy"
           />
         </div>
 
@@ -101,6 +102,7 @@ function ProductDetails() {
 <img
   src={item.image}
   alt={item.name}
+  loading="lazy"
 />
 
                 <p>{item.name}</p>

@@ -31,7 +31,7 @@ const AdminLogin = () => {
 
         {/* 🌾 Logo */}
         <div className="logo-section">
-          <img src="/logo.png" alt="Logo" />
+          <img src="/logo.png" alt="Logo" loading="lazy" />
           <h2>Pavishna Pannai</h2>
         </div>
 

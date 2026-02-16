@@ -2,9 +2,35 @@ const express = require("express");
 const jwt = require("jsonwebtoken");
 const Product = require("../models/Product");
 const Service = require("../models/Service");
-const Contact = require("../models/ContactMessage"); // adjust name if different
+const Contact = require("../models/ContactMessage");
 
 const router = express.Router();
+
+/* ================= AUTH MIDDLEWARE ================= */
+
+const verifyAdmin = (req, res, next) => {
+  const authHeader = req.headers.authorization;
+
+  if (!authHeader) {
+    return res.status(401).json({ message: "Access denied. No token provided." });
+  }
+
+  const token = authHeader.split(" ")[1];
+
+  try {
+    const decoded = jwt.verify(token, process.env.JWT_SECRET);
+
+    if (decoded.role !== "admin") {
+      return res.status(403).json({ message: "Access forbidden." });
+    }
+
+    next();
+  } catch (error) {
+    return res.status(401).json({ message: "Invalid or expired token." });
+  }
+};
+
+/* ================= LOGIN ================= */
 
 router.post("/login", (req, res) => {
   const { email, password } = req.body;
@@ -25,7 +51,9 @@ router.post("/login", (req, res) => {
   res.status(401).json({ message: "Invalid credentials" });
 });
 
-router.get("/stats", async (req, res) => {
+/* ================= ADMIN STATS (PROTECTED) ================= */
+
+router.get("/stats", verifyAdmin, async (req, res) => {
   try {
     const productCount = await Product.countDocuments();
     const serviceCount = await Service.countDocuments();
@@ -41,18 +69,19 @@ router.get("/stats", async (req, res) => {
   }
 });
 
-router.get("/latest-messages", async (req, res) => {
+/* ================= LATEST MESSAGES (PROTECTED) ================= */
+
+router.get("/latest-messages", verifyAdmin, async (req, res) => {
   try {
     const latestMessages = await Contact.find()
       .sort({ createdAt: -1 })
-      .limit(5);
+      .limit(5)
+      .lean();
 
     res.json(latestMessages);
   } catch (error) {
     res.status(500).json({ message: "Error fetching messages" });
   }
 });
-
-
 
 module.exports = router;

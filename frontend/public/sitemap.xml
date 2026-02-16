@@ -1,20 +1,15 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-
   <url>
-    <loc>https://pavishnapannai.com/</loc>
+    <loc>https://pavishna-pannai-service.vercel.app/</loc>
   </url>
-
   <url>
-    <loc>https://pavishnapannai.com/products</loc>
+    <loc>https://pavishna-pannai-service.vercel.app/products</loc>
   </url>
-
   <url>
-    <loc>https://pavishnapannai.com/services</loc>
+    <loc>https://pavishna-pannai-service.vercel.app/services</loc>
   </url>
-
   <url>
-    <loc>https://pavishnapannai.com/contact</loc>
+    <loc>https://pavishna-pannai-service.vercel.app/contact</loc>
   </url>
-
 </urlset>

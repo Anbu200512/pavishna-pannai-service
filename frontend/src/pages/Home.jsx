@@ -231,7 +231,7 @@ function Home() {
         <div className="home-about-container">
           {/* LEFT IMAGE */}
           <div className="home-about-image">
-            <img src="/home-about.png" alt="About Pavishna Pannai Service" />
+            <img src="/home-about.png" alt="About Pavishna Pannai Service" loading="lazy"/>
           </div>
 
           {/* RIGHT CONTENT */}
@@ -293,6 +293,7 @@ function Home() {
 <img
   src={product.image}
   alt={product.name}
+  loading="lazy"
 />
 
 
@@ -407,7 +408,7 @@ function Home() {
 
           {/* RIGHT IMAGE */}
           <div className="home-services-image">
-            <img src="/home-service.png" alt="Farm Service" />
+            <img src="/home-service.png" alt="Farm Service" loading="lazy" />
           </div>
         </div>
       </section>

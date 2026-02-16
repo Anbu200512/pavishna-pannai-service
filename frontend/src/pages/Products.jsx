@@ -33,6 +33,13 @@ function Products() {
       .catch((err) => console.error(err));
   }, []);
 
+  {loading ? (
+  <p>Loading products...</p>
+) : (
+  products.map(...)
+)}
+
+
   /* ================= LOCK SCROLL WHEN SIDEBAR OPEN ================= */
   useEffect(() => {
     document.body.style.overflow = showSidebar ? "hidden" : "auto";
@@ -193,6 +200,7 @@ function Products() {
   <img
     src={product.image}
     alt={product.name}
+    loading="lazy"
   />
 </div>
 

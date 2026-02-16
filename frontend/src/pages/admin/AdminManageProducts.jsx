@@ -132,6 +132,7 @@ const totalPages = Math.ceil(filteredProducts.length / productsPerPage);
 <img
   src={product.image}
   alt={product.name}
+  loading="lazy"
 />
 
 
