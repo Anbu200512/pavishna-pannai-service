@@ -214,55 +214,50 @@ const filteredProducts = products.filter((product) => {
           <div className="overlay" onClick={() => setShowSidebar(false)}></div>
         )}
 
-       
         {/* ================= PRODUCT GRID ================= */}
-        
-{loading ? (
-  <div className="loader-container">
-    <div className="spinner"></div>
-  </div>
-) : (
-  <div className="products-grid">
-    {filteredProducts.map((product) => (
-      <div className="product-card" key={product._id}>
-        <div className="product-image">
-          <img
-            src={product.image}
-            alt={product.name}
-            loading="lazy"
-          />
-        </div>
-        <div className="product-info">
-          <h3>{product.name}</h3>
-          {product.specification && (
-            <p className="product-spec">{product.specification}</p>
-          )}
-          <div className="product-actions">
-            <button
-              className="view-btn"
-              onClick={() => navigate(`/products/${product._id}`)}
-            >
-              View Details
-            </button>
-            <button
-              className="view-btn outline-btn"
-              onClick={() =>
-                navigate("/contact", {
-                  state: {
-                    serviceName: `Hello, I am interested in your product: ${product.name}. Please provide more details.`,
-                  },
-                })
-              }
-            >
-              Enquire Now
-            </button>
-          </div>
-        </div>
-      </div>
-    ))}
-  </div>
-)}
+        <div className="product-grid">
+          {currentProducts.map((product) => (
+            <div className="product-card" key={product._id}>
+       <div className="product-image">
+  <img
+    src={product.image}
+    alt={product.name}
+    loading="lazy"
+  />
+</div>
 
+              <div className="product-info">
+                <h3>{product.name}</h3>
+
+                {product.specification && (
+                  <p className="product-spec">{product.specification}</p>
+                )}
+
+                <div className="product-actions">
+                  <button
+                    className="view-btn"
+                    onClick={() => navigate(`/products/${product._id}`)}
+                  >
+                    View Details
+                  </button>
+
+                  <button
+                    className="view-btn outline-btn"
+                    onClick={() =>
+                      navigate("/contact", {
+                        state: {
+                          serviceName: `Hello, I am interested in your product: ${product.name}. Please provide more details.`,
+                        },
+                      })
+                    }
+                  >
+                    Enquire Now
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
 
       {/* ================= PAGINATION ================= */}
