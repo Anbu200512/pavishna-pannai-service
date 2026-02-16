@@ -13,11 +13,12 @@ import {
   FaHandshake,
   FaLeaf ,
 } from "react-icons/fa";
-import { FaStar } from "react-icons/fa";
+import { FaStar, FaWhatsapp } from "react-icons/fa";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
+  const [contact, setContact] = useState(null);
   const navigate = useNavigate();
 
   const startX = useRef(0);
@@ -101,6 +102,14 @@ function Home() {
     fetch("https://pavishna-pannai-service-backend.onrender.com/api/products")
       .then((res) => res.json())
       .then((data) => setProducts(data.slice(0, 6)))
+      .catch((err) => console.log(err));
+  }, []);
+
+  /* FETCH CONTACT INFO */
+  useEffect(() => {
+    fetch("https://pavishna-pannai-service-backend.onrender.com/api/contact")
+      .then((res) => res.json())
+      .then((data) => setContact(data))
       .catch((err) => console.log(err));
   }, []);
 
@@ -592,14 +601,19 @@ function Home() {
       </section>
 
       {/* ================= WHATSAPP FLOAT ================= */}
+
+
+        {contact?.phone && (
       <a
-        href="https://wa.me/919999999999"
+        href={`https://wa.me/${contact.phone}`}
         target="_blank"
         rel="noopener noreferrer"
         className="whatsapp-float"
       >
-        💬
+        <FaWhatsapp />
       </a>
+        )}
+      
     </>
   );
 }

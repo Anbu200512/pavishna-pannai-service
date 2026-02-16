@@ -52,7 +52,10 @@ function Products() {
   const filteredProducts = products.filter((product) => {
     const matchSearch = product.name
       ?.toLowerCase()
-      .includes(searchTerm.toLowerCase());
+      .includes(searchTerm.toLowerCase()) ||
+      product.specification
+        ?.toLowerCase()
+        .includes(searchTerm.toLowerCase());
 
     const matchCategory =
       selectedCategories.length === 0 ||
@@ -64,6 +67,8 @@ function Products() {
 
     return matchSearch && matchCategory && matchBrand;
   });
+
+  
 
   // /* ================= RESET PAGE WHEN FILTER CHANGES ================= */
   useEffect(() => {
