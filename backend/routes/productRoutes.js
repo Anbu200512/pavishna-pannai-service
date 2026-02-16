@@ -1,6 +1,7 @@
 const express = require("express");
 const Product = require("../models/Product");
 const upload = require("../middleware/upload"); // ✅ Cloudinary upload
+const cloudinary = require("cloudinary").v2;
 
 const router = express.Router();
 
@@ -61,9 +62,16 @@ router.get("/:id", async (req, res) => {
 });
 
 /* ================= UPDATE PRODUCT ================= */
+/* ================= UPDATE PRODUCT ================= */
 router.put("/:id", upload.single("image"), async (req, res) => {
   try {
     const { name, specification, description, category, brand } = req.body;
+
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
 
     const updateData = {
       name,
@@ -74,7 +82,12 @@ router.put("/:id", upload.single("image"), async (req, res) => {
     };
 
     if (req.file) {
-      updateData.image = req.file.path; // ✅ Cloudinary URL
+      // Delete old image
+      const oldPublicId = product.image.split("/").pop().split(".")[0];
+      await cloudinary.uploader.destroy(oldPublicId);
+
+      // Save new image
+      updateData.image = req.file.path;
     }
 
     const updated = await Product.findByIdAndUpdate(
@@ -93,11 +106,28 @@ router.put("/:id", upload.single("image"), async (req, res) => {
 /* ================= DELETE PRODUCT ================= */
 router.delete("/:id", async (req, res) => {
   try {
+    const product = await Product.findById(req.params.id);
+
+    if (!product) {
+      return res.status(404).json({ message: "Product not found" });
+    }
+
+    // Extract public_id from Cloudinary URL
+    const imageUrl = product.image;
+    const publicId = imageUrl.split("/").pop().split(".")[0];
+
+    // Delete image from Cloudinary
+    await cloudinary.uploader.destroy(publicId);
+
+    // Delete product from MongoDB
     await Product.findByIdAndDelete(req.params.id);
-    res.json({ message: "Deleted successfully" });
+
+    res.json({ message: "Product and image deleted successfully" });
   } catch (error) {
+    console.error(error);
     res.status(500).json({ message: "Delete failed" });
   }
 });
+
 
 module.exports = router;
