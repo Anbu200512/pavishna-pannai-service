@@ -51,7 +51,7 @@ function ProductDetails() {
       <div className="product-details-main">
         <div className="details-image">
           <img
-            src={`https://pavishna-pannai-service-backend.onrender.com/${product.image.replace(/\\/g, "/")}`}
+            src={product.image}
             alt={product.name}
             loading="lazy"
           />
