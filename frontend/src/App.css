@@ -1382,13 +1382,6 @@ gap: 6px;
 
 /* ===== Loading Spinner ===== */
 
-.loading-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 300px;
-}
-
 .spinner {
   width: 45px;
   height: 45px;
