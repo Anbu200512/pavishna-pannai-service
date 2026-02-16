@@ -12,27 +12,39 @@ import {
   FaShieldAlt,
   FaHandshake,
   FaLeaf ,
+  FaStar,
+  FaWhatsapp,
+  FaPhoneAlt,
+FaEnvelope,
+FaPlus 
 } from "react-icons/fa";
-import { FaStar, FaWhatsapp } from "react-icons/fa";
 
 function Home() {
   const [products, setProducts] = useState([]);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [contact, setContact] = useState(null);
   const navigate = useNavigate();
-
+  const [open, setOpen] = useState(false);
   const startX = useRef(0);
 
   const statsRef = useRef(null);
   const [startCount, setStartCount] = useState(false);
   const [productsCount, setProductsCount] = useState(0);
-
+  const fabRef = useRef(null);
   const [farmers, setFarmers] = useState(0);
 
   const [years, setYears] = useState(0);
   const [satisfaction, setSatisfaction] = useState(0);
   const [testimonialIndex, setTestimonialIndex] = useState(0);
   const testimonialStartX = useRef(0);
+
+useEffect(() => {
+  fetch(`${import.meta.env.VITE_API_URL}/api/contact-settings`)
+    .then((res) => res.json())
+    .then((data) => setContact(data))
+    .catch((err) => console.error(err));
+}, []);
+
 
   const testimonials = [
     {
@@ -96,6 +108,19 @@ function Home() {
       );
     }
   };
+
+useEffect(() => {
+  const handleClickOutside = (event) => {
+    if (fabRef.current && !fabRef.current.contains(event.target)) {
+      setOpen(false);
+    }
+  };
+
+  document.addEventListener("mousedown", handleClickOutside);
+  return () => {
+    document.removeEventListener("mousedown", handleClickOutside);
+  };
+}, []);
 
   /* FETCH PRODUCTS */
   useEffect(() => {
@@ -222,6 +247,7 @@ function Home() {
             modern equipment, and reliable services to support farmers and
             agriculture businesses.
           </p>
+
 
           <div className="hero-buttons">
             <Link to="/services" className="btn">
@@ -601,18 +627,50 @@ function Home() {
       </section>
 
       {/* ================= WHATSAPP FLOAT ================= */}
+<div
+  ref={fabRef}
+  className={`floating-contact ${open ? "open" : ""}`}
+>
 
+  {/* Main + Button (visible only when closed) */}
+  {!open && (
+    <div
+      className="float-btn main-btn"
+      onClick={() => setOpen(true)}
+    >
+      <FaPlus />
+    </div>
+  )}
 
-        {contact?.phone && (
+  {/* Expanded Buttons (visible only when open) */}
+  {open && (
+    <>
       <a
-        href={`https://wa.me/${contact.phone}`}
+        href={`https://wa.me/${contact?.phone}`}
         target="_blank"
         rel="noopener noreferrer"
-        className="whatsapp-float"
+        className="float-btn whatsapp sub-btn"
       >
         <FaWhatsapp />
       </a>
-        )}
+
+      <a
+        href={`tel:${contact?.phone}`}
+        className="float-btn call sub-btn"
+      >
+        <FaPhoneAlt />
+      </a>
+
+      <a
+        href={`mailto:${contact?.email}`}
+        className="float-btn mail sub-btn"
+      >
+        <FaEnvelope />
+      </a>
+    </>
+  )}
+</div>
+
       
     </>
   );
