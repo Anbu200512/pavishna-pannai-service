@@ -33,12 +33,6 @@ function Products() {
       .catch((err) => console.error(err));
   }, []);
 
-  {loading ? (
-  <p>Loading products...</p>
-) : (
-  products.map(...)
-)}
-
 
   /* ================= LOCK SCROLL WHEN SIDEBAR OPEN ================= */
   useEffect(() => {
