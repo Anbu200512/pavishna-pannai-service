@@ -49,24 +49,31 @@ function Products() {
   ];
 
   /* ================= FILTER LOGIC ================= */
-  const filteredProducts = products.filter((product) => {
-    const matchSearch = product.name
-      ?.toLowerCase()
-      .includes(searchTerm.toLowerCase()) ||
-      product.specification
-        ?.toLowerCase()
-        .includes(searchTerm.toLowerCase());
+const filteredProducts = products.filter((product) => {
 
-    const matchCategory =
-      selectedCategories.length === 0 ||
-      selectedCategories.includes(product.category?.name);
+  const normalizedSearch = searchTerm.toLowerCase().replace(/\s+/g, "");
+  const normalizedName = product.name?.toLowerCase().replace(/\s+/g, "");
+  const normalizedSpec = product.specification?.toLowerCase().replace(/\s+/g, "");
+  const normalizedCategory = product.category?.name?.toLowerCase();
+  const normalizedBrand = product.brand?.name?.toLowerCase();
 
-    const matchBrand =
-      selectedBrands.length === 0 ||
-      selectedBrands.includes(product.brand?.name);
+  const matchSearch =
+    normalizedName?.includes(normalizedSearch) ||
+    normalizedSpec?.includes(normalizedSearch) ||
+    normalizedCategory?.includes(searchTerm.toLowerCase()) ||
+    normalizedBrand?.includes(searchTerm.toLowerCase());
 
-    return matchSearch && matchCategory && matchBrand;
-  });
+  const matchCategory =
+    selectedCategories.length === 0 ||
+    selectedCategories.includes(product.category?.name);
+
+  const matchBrand =
+    selectedBrands.length === 0 ||
+    selectedBrands.includes(product.brand?.name);
+
+  return matchSearch && matchCategory && matchBrand;
+});
+
 
   
 
