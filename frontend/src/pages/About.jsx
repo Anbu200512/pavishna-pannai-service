@@ -53,7 +53,9 @@ function About() {
 
       {/* ===== MISSION & VISION ===== */}
       <section className="about-mission">
+        <h1>Our Mission & Vision</h1>
         <div className="about-container center">
+          
           <div className="mission-box">
             <h3>Our Mission</h3>
             <p>

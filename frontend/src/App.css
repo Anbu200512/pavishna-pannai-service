@@ -374,6 +374,7 @@
 .slide-card h3 {
   font-size: 15px;
   margin-bottom: 12px;
+  text-align: center;
 }
 
 .slide-buttons {
@@ -1033,13 +1034,13 @@
   animation: fadeRight 1s ease forwards;
 }
 .about-image:hover img {
-  transform: scale(1.03);
+  transform: scale(1.02);
 }
 
 .about-image img {
   width: 100%;
   border-radius: 20px;
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+  box-shadow: 0 15px 40px rgba(15, 15, 15, 0.08);
 }
 
 
@@ -1048,8 +1049,11 @@
 .about-mission {
   padding: 100px 10%;
   background: #f4f6f5;
+  text-align: center;
 }
-
+.about-mission h1{
+  margin-bottom: 50px;
+}
 .about-container.center {
   display: flex;
   justify-content: center;

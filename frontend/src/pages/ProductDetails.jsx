@@ -9,7 +9,9 @@ function ProductDetails() {
   const [relatedProducts, setRelatedProducts] = useState([]);
 
   useEffect(() => {
-    fetch(`https://pavishna-pannai-service-backend.onrender.com/api/products/${id}`)
+    fetch(
+      `https://pavishna-pannai-service-backend.onrender.com/api/products/${id}`,
+    )
       .then((res) => res.json())
       .then((data) => {
         setProduct(data);
@@ -27,7 +29,9 @@ function ProductDetails() {
         }
 
         // Fetch all products for related
-        fetch("https://pavishna-pannai-service-backend.onrender.com/api/products")
+        fetch(
+          "https://pavishna-pannai-service-backend.onrender.com/api/products",
+        )
           .then((res) => res.json())
           .then((allProducts) => {
             const related = allProducts
@@ -50,11 +54,7 @@ function ProductDetails() {
       {/* MAIN CONTENT */}
       <div className="product-details-main">
         <div className="details-image">
-          <img
-            src={product.image}
-            alt={product.name}
-            loading="lazy"
-          />
+          <img src={product.image} alt={product.name} loading="lazy" />
         </div>
 
         <div className="details-info">
@@ -77,18 +77,18 @@ function ProductDetails() {
             <button className="view-btn" onClick={() => navigate(-1)}>
               ← Back
             </button>
-                  <button
-                    className=" outline-btn"
-                    onClick={() =>
-                      navigate("/contact", {
-                        state: {
-                          serviceName: `Hello, I am interested in your product: ${product.name}. Please provide more details.`,
-                        },
-                      })
-                    }
-                  >
-                    Enquire Now
-                  </button>
+            <button
+              className=" outline-btn"
+              onClick={() =>
+                navigate("/contact", {
+                  state: {
+                    serviceName: `Hello, I am interested in your product: ${product.name}. Please provide more details.`,
+                  },
+                })
+              }
+            >
+              Enquire Now
+            </button>
           </div>
         </div>
       </div>
@@ -105,13 +105,11 @@ function ProductDetails() {
                 className="related-card"
                 onClick={() => navigate(`/products/${item._id}`)}
               >
-<img
-  src={item.image}
-  alt={item.name}
-  loading="lazy"
-/>
+                <img src={item.image} alt={item.name} loading="lazy" />
 
-                <p>{item.name}</p>
+                <p>
+                  {item.name} - {item.specification}
+                </p>
               </div>
             ))}
           </div>

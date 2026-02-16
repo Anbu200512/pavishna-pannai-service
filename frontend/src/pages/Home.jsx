@@ -332,7 +332,7 @@ useEffect(() => {
 />
 
 
-                <h3>{product.name}</h3>
+                <h3>{product.name} - {product.specification}</h3>
 
                 <div className="slide-buttons">
                   <button

@@ -8,14 +8,14 @@ function AdminServices() {
   const [form, setForm] = useState({
     title: "",
     description: "",
-    image: null
+    image: null,
   });
 
   /* LOAD SERVICES */
   const loadServices = () => {
     fetch("https://pavishna-pannai-service-backend.onrender.com/api/services")
-      .then(res => res.json())
-      .then(data => setServices(data));
+      .then((res) => res.json())
+      .then((data) => setServices(data));
   };
 
   useEffect(() => {
@@ -30,7 +30,7 @@ function AdminServices() {
 
     setForm({
       ...form,
-      [name]: files ? files[0] : value
+      [name]: files ? files[0] : value,
     });
   };
 
@@ -46,7 +46,8 @@ function AdminServices() {
       data.append("image", form.image);
     }
 
-    let url = "https://pavishna-pannai-service-backend.onrender.com/api/services/add";
+    let url =
+      "https://pavishna-pannai-service-backend.onrender.com/api/services/add";
     let method = "POST";
 
     if (editId) {
@@ -56,7 +57,7 @@ function AdminServices() {
 
     const res = await fetch(url, {
       method,
-      body: data
+      body: data,
     });
 
     if (!res.ok) {
@@ -75,22 +76,22 @@ function AdminServices() {
   const deleteService = async (id) => {
     if (!window.confirm("Delete this service?")) return;
 
-    await fetch(`https://pavishna-pannai-service-backend.onrender.com/api/services/${id}`, {
-      method: "DELETE"
-    });
+    await fetch(
+      `https://pavishna-pannai-service-backend.onrender.com/api/services/${id}`,
+      {
+        method: "DELETE",
+      },
+    );
 
     loadServices();
   };
 
   return (
     <div className="admin-service-page">
-
       <h2>Services Management</h2>
 
       <div className="admin-actions">
-        <button onClick={() => setActiveView("add")}>
-          ➕ Add Service
-        </button>
+        <button onClick={() => setActiveView("add")}>➕ Add Service</button>
 
         <button onClick={() => setActiveView("manage")}>
           📦 Manage Services
@@ -100,7 +101,6 @@ function AdminServices() {
       {/* ADD SERVICE */}
       {activeView === "add" && (
         <form className="admin-form" onSubmit={handleSubmit}>
-
           <input
             type="text"
             name="title"
@@ -129,68 +129,54 @@ function AdminServices() {
           <button type="submit">
             {editId ? "Update Service" : "Save Service"}
           </button>
-
         </form>
       )}
 
       {/* MANAGE SERVICES */}
-{activeView === "manage" && (
-  <div className="admin-services-grid">
+      {activeView === "manage" && (
+        <div className="admin-services-grid">
+          {services.length === 0 && <p>No services found</p>}
 
-    {services.length === 0 && <p>No services found</p>}
+          {services.map((service) => (
+            <div key={service._id} className="admin-service-card">
+              <img src={service.image} alt={service.title} loading="lazy" />
 
-    {services.map(service => (
-      <div key={service._id} className="admin-service-card">
+              <div className="admin-service-content">
+                <h4>{service.title}</h4>
 
-<img
-  src={service.image}
-  alt={service.title}
-  loading="lazy"
-/>
+                {/* <p>
+                  {service.description.length > 90
+                    ? service.description.substring(0, 90) + "..."
+                    : service.description}
+                </p> */}
 
+                <div className="admin-card-actions">
+                  <button
+                    onClick={() => {
+                      setActiveView("add");
+                      setEditId(service._id);
+                      setForm({
+                        title: service.title,
+                        description: service.description,
+                        image: null,
+                      });
+                    }}
+                  >
+                    ✏️
+                  </button>
 
-        <div className="admin-service-content">
-          <h4>{service.title}</h4>
-
-          <p>
-            {service.description.length > 90
-              ? service.description.substring(0, 90) + "..."
-              : service.description}
-          </p>
-
-          <div className="admin-card-actions">
-
-            <button
-              onClick={() => {
-                setActiveView("add");
-                setEditId(service._id);
-                setForm({
-                  title: service.title,
-                  description: service.description,
-                  image: null
-                });
-              }}
-            >
-              ✏️
-            </button>
-
-            <button
-              className="delete"
-              onClick={() => deleteService(service._id)}
-            >
-              🗑️
-            </button>
-
-          </div>
+                  <button
+                    className="delete"
+                    onClick={() => deleteService(service._id)}
+                  >
+                    🗑️
+                  </button>
+                </div>
+              </div>
+            </div>
+          ))}
         </div>
-
-      </div>
-    ))}
-
-  </div>
-)}
-
-
+      )}
     </div>
   );
 }
