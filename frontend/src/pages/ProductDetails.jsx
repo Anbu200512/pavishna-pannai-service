@@ -77,12 +77,18 @@ function ProductDetails() {
             <button className="view-btn" onClick={() => navigate(-1)}>
               ← Back
             </button>
-            <button
-              className="outline-btn"
-              onClick={() => navigate("/contact")}
-            >
-              Enquire Now
-            </button>
+                  <button
+                    className=" outline-btn"
+                    onClick={() =>
+                      navigate("/contact", {
+                        state: {
+                          serviceName: `Hello, I am interested in your product: ${product.name}. Please provide more details.`,
+                        },
+                      })
+                    }
+                  >
+                    Enquire Now
+                  </button>
           </div>
         </div>
       </div>

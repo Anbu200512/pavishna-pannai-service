@@ -7,6 +7,7 @@ function Products() {
   const [selectedCategories, setSelectedCategories] = useState([]);
   const [selectedBrands, setSelectedBrands] = useState([]);
   const [showSidebar, setShowSidebar] = useState(false);
+const [loading, setLoading] = useState(true);
 
   const [currentPage, setCurrentPage] = useState(1);
   const productsPerPage = 6;
@@ -33,6 +34,21 @@ function Products() {
       .catch((err) => console.error(err));
   }, []);
 
+useEffect(() => {
+  const fetchProducts = async () => {
+    try {
+      const res = await fetch(`${import.meta.env.VITE_API_URL}/api/products`);
+      const data = await res.json();
+      setProducts(data);
+    } catch (error) {
+      console.error(error);
+    } finally {
+      setLoading(false);
+    }
+  };
+
+  fetchProducts();
+}, []);
 
   /* ================= LOCK SCROLL WHEN SIDEBAR OPEN ================= */
   useEffect(() => {
@@ -198,50 +214,55 @@ const filteredProducts = products.filter((product) => {
           <div className="overlay" onClick={() => setShowSidebar(false)}></div>
         )}
 
+       
         {/* ================= PRODUCT GRID ================= */}
-        <div className="product-grid">
-          {currentProducts.map((product) => (
-            <div className="product-card" key={product._id}>
-       <div className="product-image">
-  <img
-    src={product.image}
-    alt={product.name}
-    loading="lazy"
-  />
-</div>
-
-              <div className="product-info">
-                <h3>{product.name}</h3>
-
-                {product.specification && (
-                  <p className="product-spec">{product.specification}</p>
-                )}
-
-                <div className="product-actions">
-                  <button
-                    className="view-btn"
-                    onClick={() => navigate(`/products/${product._id}`)}
-                  >
-                    View Details
-                  </button>
-
-                  <button
-                    className="view-btn outline-btn"
-                    onClick={() =>
-                      navigate("/contact", {
-                        state: {
-                          serviceName: `Hello, I am interested in your product: ${product.name}. Please provide more details.`,
-                        },
-                      })
-                    }
-                  >
-                    Enquire Now
-                  </button>
-                </div>
-              </div>
-            </div>
-          ))}
+        
+{loading ? (
+  <div className="loader-container">
+    <div className="spinner"></div>
+  </div>
+) : (
+  <div className="products-grid">
+    {filteredProducts.map((product) => (
+      <div className="product-card" key={product._id}>
+        <div className="product-image">
+          <img
+            src={product.image}
+            alt={product.name}
+            loading="lazy"
+          />
         </div>
+        <div className="product-info">
+          <h3>{product.name}</h3>
+          {product.specification && (
+            <p className="product-spec">{product.specification}</p>
+          )}
+          <div className="product-actions">
+            <button
+              className="view-btn"
+              onClick={() => navigate(`/products/${product._id}`)}
+            >
+              View Details
+            </button>
+            <button
+              className="view-btn outline-btn"
+              onClick={() =>
+                navigate("/contact", {
+                  state: {
+                    serviceName: `Hello, I am interested in your product: ${product.name}. Please provide more details.`,
+                  },
+                })
+              }
+            >
+              Enquire Now
+            </button>
+          </div>
+        </div>
+      </div>
+    ))}
+  </div>
+)}
+
       </div>
 
       {/* ================= PAGINATION ================= */}
