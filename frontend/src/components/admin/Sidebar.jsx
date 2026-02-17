@@ -15,7 +15,7 @@ function Sidebar({ isOpen, setIsOpen }) {
   
       <aside className={`admin-sidebar ${isOpen ? "open" : ""}`}>
         <div className="sidebar-header">
-          <h2 className="admin-logo">PPS Admin</h2>
+          <img src="/full-logo.png" alt="Pavishna Pannai Service Logo" loading="lazy" />
 
           <button
             className="close-btn"
@@ -30,13 +30,15 @@ function Sidebar({ isOpen, setIsOpen }) {
             <FaTachometerAlt /> Dashboard
           </NavLink>
 
+                    <NavLink to="/admin/add-product" onClick={() => setIsOpen(false)}>
+            <FaPlus /> Add Product
+          </NavLink>
+
           <NavLink to="/admin/manage-products" onClick={() => setIsOpen(false)}>
             <FaBoxOpen /> Products
           </NavLink>
 
-          <NavLink to="/admin/add-product" onClick={() => setIsOpen(false)}>
-            <FaPlus /> Add Product
-          </NavLink>
+
 
           <NavLink to="/admin/services" onClick={() => setIsOpen(false)}>
             <FaTools /> Services
@@ -51,9 +53,7 @@ function Sidebar({ isOpen, setIsOpen }) {
           </NavLink>
         </nav>
 
-        <button className="logout-btn">
-          <FaSignOutAlt /> Logout
-        </button>
+
       </aside>
     
   );

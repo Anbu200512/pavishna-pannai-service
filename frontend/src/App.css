@@ -20,6 +20,7 @@
   justify-content: space-between;
   align-items: center;
   z-index: 100;
+   box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .logo {
@@ -27,6 +28,7 @@
   font-size: 20px;
   text-decoration: none;
 }
+
 
 .menu-icon {
   display: none;
@@ -41,6 +43,36 @@
   font-size: 15px;
   transition: 0.3s ease;
 }
+
+.brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.brand-logo {
+  height: 40px;
+  width: 40px;
+  object-fit: contain;
+}
+
+.brand-text {
+  font-weight: bold;
+  font-size: 20px;
+}
+
+.brand-logo {
+  height: 40px;
+  width: 40px;
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.nav-links a:hover {
+  color: #c8e6c9;
+}
+
+
 
 /* ================= HERO SECTION ================= */
 

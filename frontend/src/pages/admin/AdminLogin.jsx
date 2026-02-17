@@ -1,7 +1,7 @@
 import { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
-
+import { FaEye, FaEyeSlash } from "react-icons/fa";
 
 const AdminLogin = () => {
   const [email, setEmail] = useState("");
@@ -31,8 +31,8 @@ const AdminLogin = () => {
 
         {/* 🌾 Logo */}
         <div className="logo-section">
-          <img src="/logo.png" alt="Logo" loading="lazy" />
-          <h2>Pavishna Pannai</h2>
+          <img src="/Pavishna-pannai-service-bglogo1.png" alt="Pavishna Pannai service Logo" loading="lazy" />
+          <h2>Pavishna Pannai Service</h2>
         </div>
 
         <p>Admin Panel Access</p>
@@ -62,7 +62,8 @@ const AdminLogin = () => {
               className="toggle"
               onClick={() => setShowPassword(!showPassword)}
             >
-              {showPassword ? "🙈" : "👁"}
+              {showPassword ? <FaEyeSlash /> : <FaEye />}
+
             </span>
           </div>
 

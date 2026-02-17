@@ -6,7 +6,16 @@ function Navbar() {
 
   return (
     <div className="navbar">
-      <div className="logo">🌱 Pavishna Pannai Service</div>
+  <div className="brand">
+    <img 
+      src="/full-logo.png" 
+      alt="Pavishna Pannai Service Logo" 
+      className="brand-logo"
+      loading="lazy"
+    />
+    <div className="brand-text">Pavishna Pannai Service</div>
+  </div>
+
 
       {/* Menu Icon (Mobile) */}
       <div className="menu-icon" onClick={() => setOpen(!open)}>
